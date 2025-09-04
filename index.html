@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Library Management System</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Your Custom CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-bold text-indigo-600">Library Management System</h1>
+            <p class="text-gray-500 mt-2 text-lg">An interactive web version of your C++ project.</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Column: Actions & Forms -->
+            <div class="lg:col-span-4 bg-white p-6 rounded-2xl shadow-xl">
+                <h2 class="text-2xl font-bold mb-5 border-b-2 border-indigo-200 pb-3">Librarian's Desk</h2>
+                <form id="addBookForm">
+                    <div class="mb-4">
+                        <label for="bookId" class="block text-sm font-semibold text-gray-700 mb-1">Book ID</label>
+                        <input type="number" id="bookId" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="bookTitle" class="block text-sm font-semibold text-gray-700 mb-1">Book Title</label>
+                        <input type="text" id="bookTitle" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="bookAuthor" class="block text-sm font-semibold text-gray-700 mb-1">Author</label>
+                        <input type="text" id="bookAuthor" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-transform transform hover:scale-105">
+                        Add New Book
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Column: Book Catalog -->
+            <div class="lg:col-span-8 bg-white p-6 rounded-2xl shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-5 border-b-2 border-indigo-200 pb-3">
+                    <h2 class="text-2xl font-bold mb-3 md:mb-0">Library Catalog</h2>
+                    <div class="relative w-full md:w-80">
+                        <input type="text" id="searchInput" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Search by Title or ID...">
+                         <svg class="h-5 w-5 text-gray-400 absolute top-1/2 left-3 transform -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                    </div>
+                </div>
+                <div id="bookListContainer" class="max-h-[70vh] overflow-y-auto pr-2">
+                    <div id="bookList" class="space-y-4">
+                        <!-- Book entries will be dynamically inserted here -->
+                    </div>
+                    <p id="emptyMessage" class="text-center text-gray-500 py-16">The library is empty. Please add a book.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for User Input and Messages -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4">
+        <div id="modalContent" class="bg-white rounded-xl shadow-2xl p-7 w-full max-w-md modal-enter">
+            <h3 class="text-xl font-bold text-gray-800" id="modalTitle"></h3>
+            <p class="text-gray-600 mt-2" id="modalMessage"></p>
+            <input type="text" id="modalInput" class="w-full mt-4 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 hidden" placeholder="Enter student name...">
+            <div class="mt-6 flex justify-end space-x-3">
+                <button id="modalCancel" class="px-5 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300">Cancel</button>
+                <button id="modalConfirm" class="px-5 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your Custom JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
